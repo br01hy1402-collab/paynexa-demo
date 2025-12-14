@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Paynexa Demo v3.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#eaf2ff;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto
+}
+
+/* PHONE FRAME */
+.phone{
+  width:390px;
+  height:780px;
+  background:#ffffff;
+  border-radius:36px;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  overflow:hidden;
+  border:10px solid #111827;
+}
+
+/* APP */
+.app{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#f9fbff;
+  color:#111827;
+}
+
+.screen{display:none}
+.screen.active{display:block}
+
+/* HEADER */
+.header{
+  text-align:center;
+  padding:16px;
+}
+.logo{
+  width:56px;height:56px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#2563EB,#38BDF8);
+  color:white;
+  font-weight:800;
+  font-size:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 6px;
+}
+.brand{font-size:18px;font-weight:700}
+
+/* COMMON */
+.section-title{
+  margin:12px 16px;
+  font-size:13px;
+  color:#64748B;
+}
+.card{
+  background:#ffffff;
+  margin:12px;
+  padding:14px;
+  border-radius:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+.item{
+  background:#f1f5ff;
+  padding:14px;
+  border-radius:14px;
+  text-align:center;
+  font-size:12px;
+  font-weight:600;
+}
+.item:active{transform:scale(.97)}
+
+.bank{
+  background:#eef2ff;
+  padding:12px;
+  border-radius:14px;
+  margin-top:8px;
+}
+
+/* BOTTOM NAV */
+.bottom{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+  background:#ffffff;
+  border-top:1px solid #e5e7eb;
+}
+.scan{
+  background:#2563EB;
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  margin-top:-28px;
+  box-shadow:0 10px 25px rgba(37,99,235,.45);
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+<div class="app">
+
+<!-- HOME -->
+<div class="screen active" id="home">
+
+  <!-- CUSTOMER PROFILE -->
+  <div class="header">
+    <div class="logo">PN</div>
+    <div class="brand">Paynexa</div>
+    <div style="font-size:13px;color:#64748B">Rahul Kumar</div>
+  </div>
+
+  <!-- WALLET & BANK -->
+  <div class="section-title">WALLET & BANK</div>
+  <div class="card grid2">
+    <div class="item" onclick="go('wallet')">
+      👛 Wallet<br><small>₹1,800</small>
+    </div>
+    <div class="item" onclick="go('bank')">
+      🏦 Bank<br><small>3 Linked</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="font-size:12px;color:#64748B">UPI ID</div>
+    <b>rahul@paynexa</b>
+    <div style="font-size:12px;color:#2563EB;margin-top:6px">
+      ⬇ Download Paynexa UPI QR
+    </div>
+  </div>
+
+  <!-- SEND / RECEIVE -->
+  <div class="section-title">SEND & RECEIVE</div>
+  <div class="card grid2">
+    <div class="item" onclick="go('send')">📤 Send</div>
+    <div class="item" onclick="go('receive')">📥 Receive</div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section-title">SERVICES</div>
+  <div class="card grid3">
+    <div class="item">💡 Bills</div>
+    <div class="item">📱 Mobile</div>
+    <div class="item">🚘 FASTag</div>
+
+    <div class="item">💳 Loan</div>
+    <div class="item">✈️ Travel</div>
+    <div class="item">🎬 Movies</div>
+  </div>
+
+</div>
+
+<!-- WALLET -->
+<div class="screen" id="wallet">
+  <div class="header"><b>Wallet</b></div>
+  <div class="card">
+    <h2>₹1,800</h2>
+    <p>Wallet Limit: ₹5,00,000</p>
+    <p style="font-size:12px;color:#64748B">Limit based on KYC</p>
+  </div>
+</div>
+
+<!-- BANK -->
+<div class="screen" id="bank">
+  <div class="header"><b>Linked Banks</b></div>
+  <div class="card">
+    <div class="bank">🏦 SBI (Primary)</div>
+    <div class="bank">🏦 HDFC Bank</div>
+    <div class="bank">🏦 ICICI Bank</div>
+  </div>
+</div>
+
+<!-- SEND / RECEIVE -->
+<div class="screen" id="send"><div class="header"><b>Send Money</b></div></div>
+<div class="screen" id="receive"><div class="header"><b>Receive Money</b></div></div>
+
+<!-- SCAN -->
+<div class="screen" id="scan">
+  <div class="header"><b>Scan & Pay</b></div>
+  <div class="card">📷 QR Scanner (Demo)</div>
+</div>
+
+<!-- PROFILE -->
+<div class="screen" id="profile">
+  <div class="header"><b>Profile</b></div>
+  <div class="card">
+    <p>Name: Rahul Kumar</p>
+    <p>KYC Status: Verified</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom">
+  <div onclick="go('home')">🏠<br>Home</div>
+  <div onclick="go('home')">💡<br>Bills</div>
+  <div class="scan" onclick="go('scan')">📷</div>
+  <div onclick="go('wallet')">👛<br>Wallet</div>
+  <div onclick="go('profile')">👤<br>Profile</div>
+</div>
+
+</div>
+</div>
+
+<script>
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
